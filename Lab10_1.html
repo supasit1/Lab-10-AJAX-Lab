@@ -1,0 +1,30 @@
+<html><head><meta charset="utf-8">
+    <script>
+        var xmlHttp;
+    
+        function send() {
+            xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = showResult;
+    
+            var m = document.getElementById("m").value;
+            var or = document.getElementById("or").value;
+            var ba = document.getElementById("ba").value;
+            var url = "addf.php?&m=" + m*30 + "&or=" + or*70 +"&ba="+ ba*30;
+           
+           xmlHttp.open("GET", url);
+           xmlHttp.send();   
+       }
+       function showResult() {
+           if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+               document.getElementById("result").innerHTML = xmlHttp.responseText;
+           }
+       }
+    </script></head>
+    <body>
+         มะม่วงกิโลกรัม ละ 30 บาท ขายได้  <input type="number" id="m">กก.<br>
+         ส้มกิโลกรัม ละ 70 บาท ขายได้ <input type="number" id="or">กก.<br>
+         กล้วยกิโลกรัม ละ 30 บาท ขายได้  <input type="number" id="ba" onkeyup="send()">หวี<br>
+         <span id="result"></span>
+    </body></html>
+    
+    
